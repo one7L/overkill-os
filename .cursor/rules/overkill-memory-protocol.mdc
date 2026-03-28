@@ -1,0 +1,12 @@
+---
+globs: ".overkill/**"
+description: "OverkillOS memory read/write conventions"
+---
+
+**Cascade:** QUICKSTART (~300 tokens) → MEMORY (~2–5k tokens) → ARCHIVE (unlimited; never pruned). Demote downstream when detail ages or belongs in history; do not delete canonical content.
+
+**Demotion:** Move stale or overly detailed QUICKSTART material to MEMORY; move historical MEMORY material to ARCHIVE. Preserve traceability (what moved, why).
+
+**Writes:** Daily logs on task/decision boundaries, topic switches, ~15 exchanges, before heavy work, and session end. Touch QUICKSTART when status, blockers, or guardrails change. Touch MEMORY for architecture, failures, PRD, and debt. ARCHIVE for demotions, weekly rolls, retros.
+
+**Authority:** Full rules in `.overkill/memory/SYNC-PROTOCOL.md`.

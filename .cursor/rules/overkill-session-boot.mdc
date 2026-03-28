@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+description: "OverkillOS session boot reinforcement"
+---
+
+Before the first substantive response: if `.overkill/identity/BOOTSTRAP.md` exists, read it and run bootstrap (use `~/.overkill/` to detect returning vs first-ever users per `AGENTS.md`).
+
+Otherwise read, in order: `.overkill/identity/SOUL.md`, `.overkill/memory/QUICKSTART.md`, yesterday's `.overkill/memory/daily/YYYY-MM-DD.md`, and today's daily file if present.
+
+Do not load `MEMORY.md`, `ARCHIVE.md`, or `~/.overkill/LEARNINGS.md` at boot. Align with the Live State Block in `AGENTS.md` before replying.

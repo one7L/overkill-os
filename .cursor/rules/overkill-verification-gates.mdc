@@ -1,0 +1,10 @@
+---
+globs: ".overkill/verification/**"
+description: "OverkillOS gate enforcement during plans"
+---
+
+Do not advance phases without passing defined gates. Do not regress properties that already passed; fix or explicitly re-scope with recorded rationale and evidence.
+
+Plans and execution must respect the artifact contract: required outputs exist, are verifiable, and match the gate checklist. Prefer measurable evidence (tests, logs, diffs) over claims.
+
+When editing verification specs or checklists, keep gate criteria explicit and tied to reproducible verification steps.
