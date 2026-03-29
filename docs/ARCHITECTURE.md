@@ -13,9 +13,14 @@ Lives in your home directory, outside any project repo. Persists across ALL proj
 | IDENTITY.md | Agent name, persona, vibe |
 | USER.md | Your profile: preferences, goals, communication style |
 | SOUL-BASE.md | Base personality (per-project SOUL inherits from this) |
-| LEARNINGS.md | Cross-project lessons, patterns, mistakes to avoid |
+| LEARNINGS.md | Cross-project lessons (legacy; cascade supersedes) |
+| memory/QUICKSTART.md | **Tier 1 global** (~300 tokens): cross-project state, read at every boot |
+| memory/MEMORY.md | **Tier 2 global** (~2-5k tokens): how user works, business context, patterns |
+| memory/ARCHIVE.md | **Tier 3 global** (unlimited, never pruned): full cross-project history |
 | projects/registry.md | Index of every project the agent has worked on |
 | projects/\*/summary.md | Condensed snapshot per project |
+
+The global memory cascade ensures the agent carries rich context across projects -- not just bullet-point learnings, but the full depth of how the user thinks, communicates, makes decisions, and what they value in practice.
 
 Created once by `init.sh`. Not committed to git. Optionally backed up to a private repo.
 
@@ -61,24 +66,48 @@ Three rule files that reinforce AGENTS.md behavior:
 
 ---
 
-## Three-Tier Memory Cascade
+## Three-Tier Memory Cascade (two instances)
+
+The cascade exists at TWO levels: global and per-project.
+
+### Global Cascade (`~/.overkill/memory/`)
+Carries cross-project context. Read at boot in every project.
+
+```
+     ~/.overkill/memory/QUICKSTART.md (~300 tokens, every boot Step 0)
+         |
+         | references
+         v
+     ~/.overkill/memory/MEMORY.md (~2-5k tokens, on demand)
+         |   How user works, business context, decision patterns,
+         |   communication style, workflow patterns that transfer
+         |
+         | references
+         v
+     ~/.overkill/memory/ARCHIVE.md (unlimited, never pruned)
+         Full user profile depth, network, relationship context,
+         consolidated cross-project histories, session highlights
+```
+
+### Per-Project Cascade (`.overkill/memory/`)
+Project-specific context. Read at boot for active project.
 
 ```
      AGENTS.md Live State Block (~150 tokens, auto-injected)
-                    |
-                    v
-     QUICKSTART.md (Tier 1, ~300 tokens, every boot)
+         |
+         v
+     .overkill/memory/QUICKSTART.md (~300 tokens, every boot Step 2)
          |
          | references
          v
-     MEMORY.md (Tier 2, ~2-5k tokens, on demand)
+     .overkill/memory/MEMORY.md (~2-5k tokens, on demand)
          |
          | references
          v
-     ARCHIVE.md (Tier 3, unlimited, never pruned, by section anchor)
+     .overkill/memory/ARCHIVE.md (unlimited, never pruned)
 ```
 
-Content flows downward through demotion. Nothing is deleted. ARCHIVE grows forever.
+Content flows downward through demotion at both levels. Nothing is deleted. Both ARCHIVEs grow forever.
 
 ---
 

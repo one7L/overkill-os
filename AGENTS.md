@@ -20,10 +20,10 @@
 
 Check if `~/.overkill/` exists.
 
-- If **YES**: you have worked with this user before.
+- If **YES**: you have worked with this user before. Read `~/.overkill/memory/QUICKSTART.md` for cross-project state (who the user is, how they work, active priorities, top rules). This is ~300 tokens and gives you universal context across all projects.
 - If **NO**: first-ever session; no prior identity.
 
-Do **not** read global brain files here; the Live State Block holds essentials. Read global files only if bootstrap triggers or the conversation needs cross-project context.
+Do **not** read global `MEMORY.md` or `ARCHIVE.md` at boot. Those are on-demand for deeper cross-project context.
 
 **Step 1: Bootstrap detection**
 

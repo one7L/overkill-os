@@ -67,8 +67,37 @@ Example: "## auth-migration-full\n[Full 2000-word account...]"
 
 ## Global Brain Sync
 
+The global brain has its own three-tier memory cascade at `~/.overkill/memory/`.
+This carries cross-project context so every new project starts with full awareness.
+
+### ~/.overkill/memory/QUICKSTART.md (Tier 1 global, ~300 tokens)
+Read at every boot in every project (Step 0).
+Update when:
+- User's cross-project priorities change
+- A new "never-again" rule is discovered
+- Active workstreams change
+- Communication/work pattern insights are confirmed across multiple sessions
+
+### ~/.overkill/memory/MEMORY.md (Tier 2 global, ~2-5k tokens)
+Read on demand when cross-project depth is needed.
+Update when:
+- New workflow patterns are confirmed (how the user approaches problems, scopes work, escalates)
+- Business context changes (new clients, revenue shifts, company updates)
+- Architecture or debugging patterns transfer across projects
+- User pushback patterns or decision-making styles are observed and documented
+
+### ~/.overkill/memory/ARCHIVE.md (Tier 3 global, unlimited, NEVER pruned)
+Read by section anchor only.
+Update when:
+- Content demoted from global MEMORY.md
+- A project milestone generates cross-project lessons
+- User relationship/network/business details need full-depth storage
+- Session histories with cross-project significance are consolidated
+
 ### ~/.overkill/LEARNINGS.md
-Update when a lesson applies beyond this project.
+Legacy file. Still valid. Contains bullet-point lessons.
+New learnings should go to the global memory cascade instead.
+Existing content remains as reference.
 
 ### ~/.overkill/USER.md
 Update when user preferences change.

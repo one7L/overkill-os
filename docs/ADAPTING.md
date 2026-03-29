@@ -80,6 +80,20 @@ The `.overkill/` directory works unchanged across all platforms. Only the entry-
 
 ---
 
+## Tauri Desktop App (Future Product)
+
+The file-based template described above is the personal tool. The commercial product is a native Tauri desktop application that compiles all OverkillOS logic into a Rust binary and exposes it via a local MCP server on `localhost:7017`.
+
+With the Tauri app:
+- IDEs connect via MCP tools (`overkill_boot`, `overkill_write`, `overkill_gate`, etc.)
+- The agent never reads raw `.overkill/` files -- it receives computed context from the engine
+- File contents are encrypted at rest
+- The same MCP server serves Cursor, Claude Code, OpenClaw, and any MCP-compatible IDE simultaneously
+
+See `docs/TAURI-PRODUCT-PLAN.md` for the full product plan, architecture, development phases, and distribution strategy.
+
+---
+
 ## Key Principle
 
 The core engine (`.overkill/`) never changes between platforms. Only the entry-point mechanism changes. This means:

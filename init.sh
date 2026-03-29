@@ -72,12 +72,16 @@ else
   echo "Global Brain: NOT FOUND at $GLOBAL_BRAIN"
   print_step "Creating $GLOBAL_BRAIN from templates..." "creating"
   mkdir -p "$GLOBAL_BRAIN/projects"
+  mkdir -p "$GLOBAL_BRAIN/memory"
   cp "$SCRIPT_DIR/global/IDENTITY.md"   "$GLOBAL_BRAIN/IDENTITY.md"
   cp "$SCRIPT_DIR/global/USER.md"       "$GLOBAL_BRAIN/USER.md"
   cp "$SCRIPT_DIR/global/SOUL-BASE.md"  "$GLOBAL_BRAIN/SOUL-BASE.md"
   cp "$SCRIPT_DIR/global/LEARNINGS.md"  "$GLOBAL_BRAIN/LEARNINGS.md"
   cp "$SCRIPT_DIR/global/projects/registry.md" "$GLOBAL_BRAIN/projects/registry.md"
-  print_step "Global brain created" "done"
+  cp "$SCRIPT_DIR/global/memory/QUICKSTART.md" "$GLOBAL_BRAIN/memory/QUICKSTART.md"
+  cp "$SCRIPT_DIR/global/memory/MEMORY.md"     "$GLOBAL_BRAIN/memory/MEMORY.md"
+  cp "$SCRIPT_DIR/global/memory/ARCHIVE.md"    "$GLOBAL_BRAIN/memory/ARCHIVE.md"
+  print_step "Global brain created (with memory cascade)" "done"
   echo "  This is your first OverkillOS project."
 fi
 

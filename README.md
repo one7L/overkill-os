@@ -73,15 +73,29 @@ When you send your first message, the agent reads exactly four files:
 
 Combined with the Live State Block, full contextualization in ~500 tokens.
 
-### Three-Tier Memory Cascade
+### Three-Tier Memory Cascade (global + per-project)
+
+The cascade exists at two levels:
+
+**Global (`~/.overkill/memory/`)** -- cross-project context that follows you everywhere:
 
 | Tier | File | Size | When Read |
 |------|------|------|-----------|
-| 1 | QUICKSTART.md | ~300 tokens | Every boot |
+| 1 | QUICKSTART.md | ~300 tokens | Every boot, every project (Step 0) |
 | 2 | MEMORY.md | ~2-5k tokens | On demand |
 | 3 | ARCHIVE.md | Unlimited | By section anchor |
 
-Content is demoted down tiers, never deleted. ARCHIVE.md grows forever.
+Contains: how you work, decision patterns, business context, network, communication style, cross-project lessons.
+
+**Per-project (`.overkill/memory/`)** -- project-specific context:
+
+| Tier | File | Size | When Read |
+|------|------|------|-----------|
+| 1 | QUICKSTART.md | ~300 tokens | Every boot (Step 2) |
+| 2 | MEMORY.md | ~2-5k tokens | On demand |
+| 3 | ARCHIVE.md | Unlimited | By section anchor |
+
+Content is demoted down tiers, never deleted. Both ARCHIVEs grow forever.
 
 ### Event-Based Write Triggers
 
@@ -118,12 +132,15 @@ The agent writes to memory based on events, not arbitrary intervals:
 
 **Future expansion:** See `docs/ADAPTING.md` for how to port to Claude Code (`CLAUDE.md`), OpenClaw, or generic AI IDEs. The core `.overkill/` files are platform-agnostic markdown.
 
+**Product roadmap:** See `docs/TAURI-PRODUCT-PLAN.md` for the plan to ship OverkillOS as a native desktop application (Tauri + Rust backend + local MCP server). The file-based template is the personal tool; the Tauri app is the commercial product.
+
 ## Docs
 
 - `docs/PHILOSOPHY.md` -- deep dive into the 14 core principles
 - `docs/ARCHITECTURE.md` -- layer descriptions and diagrams
 - `docs/ADAPTING.md` -- porting to other platforms
 - `docs/EXAMPLES.md` -- walkthrough of real-world usage
+- `docs/TAURI-PRODUCT-PLAN.md` -- desktop app product plan (Tauri + Rust + MCP)
 
 ## License
 
