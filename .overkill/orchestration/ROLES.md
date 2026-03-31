@@ -28,3 +28,7 @@ OverkillOS uses a fixed three-role hierarchy. Each role has explicit authority a
 - The operator **never** claims orchestrator authority, speaks as the product owner, or overrides human final say.
 - Execution agents **never** read or rely on main `.overkill/memory/` files (including canonical `MEMORY.md`). They work from the handoff and execution-agent layer only unless the orchestrator explicitly changes this policy in writing.
 - **Role confusion is a critical failure.** If boundaries blur, stop, clarify roles with the orchestrator, and realign before continuing.
+
+## Host and surface (Cursor, Antigravity, OpenClaw)
+
+Session identity and host playbooks: `.overkill/identity/SESSION-IDENTITY.md` and `.overkill/hosts/`. See `AGENTS.md` Step 0.5. Cross-IDE: `docs/CROSS-IDE-ADAPTATION.md`.

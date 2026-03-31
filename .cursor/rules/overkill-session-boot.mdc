@@ -7,4 +7,6 @@ Before the first substantive response: if `.overkill/identity/BOOTSTRAP.md` exis
 
 Otherwise read, in order: `.overkill/identity/SOUL.md`, `.overkill/memory/QUICKSTART.md`, yesterday's `.overkill/memory/daily/YYYY-MM-DD.md`, and today's daily file if present.
 
+If `.overkill/hosts/cursor.md` exists, read it after the above (Cursor host playbook).
+
 Do not load `MEMORY.md`, `ARCHIVE.md`, or `~/.overkill/LEARNINGS.md` at boot. Align with the Live State Block in `AGENTS.md` before replying.

@@ -25,6 +25,20 @@ Check if `~/.overkill/` exists.
 
 Do **not** read global `MEMORY.md` or `ARCHIVE.md` at boot. Those are on-demand for deeper cross-project context.
 
+**Step 0.5: Session identity and host surface (optional)**
+
+If `.overkill/identity/SESSION-IDENTITY.md` exists, read it.
+
+- **Host** (if unstated): infer `Cursor` if a `.cursor/` directory exists at repo root; otherwise `Unknown` until the orchestrator specifies (e.g. Antigravity, OpenClaw).
+- **Role** (if unstated): `Operator` unless the orchestrator says you are an **Execution** agent.
+- **Persona:** default from the Live State Block line `Agent identity:`.
+
+If **Role** is **Execution**: do **not** run Step 1 or Step 2. Read only `.overkill/execution-agent/AGENTS.md` and `.overkill/execution-agent/HANDOFF.md`, then only the code paths required by that policy. Respond from that scope.
+
+If **Role** is **Operator** (default): if a host playbook exists at `.overkill/hosts/<host>.md` (lowercase: `cursor`, `antigravity`, `openclaw`), read it after `SESSION-IDENTITY.md` (when present). Map Host → file: `Cursor` → `cursor.md`, `Antigravity` → `antigravity.md`, `OpenClaw` → `openclaw.md`.
+
+If `SESSION-IDENTITY.md` is **missing**, skip Step 0.5 entirely (no extra reads; behavior matches pre-upgrade boot).
+
 **Step 1: Bootstrap detection**
 
 If `.overkill/identity/BOOTSTRAP.md` exists:

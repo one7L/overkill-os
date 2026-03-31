@@ -112,6 +112,14 @@ Update when project status changes.
 - ~/.overkill/IDENTITY.md (agent core identity)
 - ~/.overkill/SOUL-BASE.md (behavioral constitution)
 
+### ~/.overkill/hosts/
+
+Host playbooks (`cursor`, `antigravity`, `openclaw`). Sync from template `global/hosts/` when updated. See `docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md`.
+
+### Template to existing project
+
+`scripts/overkill-sync.sh` and `scripts/MANAGED-FILES.txt` update **managed** paths only; do not add canonical memory files to the manifest unless intentional. Optional: `<project>/.overkill/.sync-ignore`.
+
 ## Drift Detection (at session start)
 
 Before responding to the first message:

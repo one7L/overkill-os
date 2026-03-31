@@ -1,0 +1,17 @@
+# One path per line, relative to template/repo root. Used by overkill-sync.sh.
+# Lines starting with # are ignored.
+#
+# AGENTS.md is NOT listed: existing projects have customized Live State Blocks.
+# Merge Step 0.5+ from template AGENTS.md manually when upgrading.
+
+.overkill/identity/SESSION-IDENTITY.md
+.overkill/hosts/README.md
+.overkill/hosts/cursor.md
+.overkill/hosts/antigravity.md
+.overkill/hosts/openclaw.md
+.overkill/execution-agent/AGENTS.md
+.cursor/rules/overkill-session-boot.mdc
+adapters/README.md
+adapters/cursor/README.md
+adapters/openclaw/README.md
+adapters/antigravity/README.md

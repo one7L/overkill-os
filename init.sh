@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-OVERKILL_VERSION="1.0.0"
+OVERKILL_VERSION="1.1.0"
 GLOBAL_BRAIN="$HOME/.overkill"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -81,6 +81,10 @@ else
   cp "$SCRIPT_DIR/global/memory/QUICKSTART.md" "$GLOBAL_BRAIN/memory/QUICKSTART.md"
   cp "$SCRIPT_DIR/global/memory/MEMORY.md"     "$GLOBAL_BRAIN/memory/MEMORY.md"
   cp "$SCRIPT_DIR/global/memory/ARCHIVE.md"    "$GLOBAL_BRAIN/memory/ARCHIVE.md"
+  if [[ -d "$SCRIPT_DIR/global/hosts" ]]; then
+    mkdir -p "$GLOBAL_BRAIN/hosts"
+    cp "$SCRIPT_DIR/global/hosts"/*.md "$GLOBAL_BRAIN/hosts/" 2>/dev/null || true
+  fi
   print_step "Global brain created (with memory cascade)" "done"
   echo "  This is your first OverkillOS project."
 fi

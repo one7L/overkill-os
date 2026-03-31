@@ -94,6 +94,10 @@ See `docs/TAURI-PRODUCT-PLAN.md` for the full product plan, architecture, develo
 
 ---
 
+## Operator runbook and downstream sync
+
+When the **template** (`overkill-os`) gains new engine files, use **`docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md`** and **`scripts/overkill-sync.sh`** to refresh **existing** project checkouts without re-running `init.sh` on a tree that already has `.overkill/`. See also **`docs/CROSS-IDE-ADAPTATION.md`**.
+
 ## Key Principle
 
 The core engine (`.overkill/`) never changes between platforms. Only the entry-point mechanism changes. This means:

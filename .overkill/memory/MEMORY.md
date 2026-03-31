@@ -4,6 +4,10 @@
 > For full history on any item, see ARCHIVE.md section anchors.
 > Last updated: [timestamp]
 
+## Multi-surface identity
+
+Optional Step 0.5 in `AGENTS.md`: [SESSION-IDENTITY.md](../identity/SESSION-IDENTITY.md), `.overkill/hosts/*.md`, execution boundaries in [execution-agent/AGENTS.md](../execution-agent/AGENTS.md). Template sync: `scripts/overkill-sync.sh` + `scripts/MANAGED-FILES.txt`. Operator runbook: [docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md](../../docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md). Anchor: [ARCHIVE.md](ARCHIVE.md#multi-surface-identity-2026-03-30).
+
 ## Architecture Decisions
 [Decisions with rationale. Format: "Decision: X. Rationale: Y. Date: Z. See ARCHIVE.md #anchor for full log."]
 
