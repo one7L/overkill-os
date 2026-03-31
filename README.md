@@ -1,5 +1,7 @@
 # OverkillOS
 
+**Current template version: 1.2.0** — see `VERSION` and `CHANGELOG.md`.
+
 A Cursor-first operational environment for AI-assisted software development. Two-tier memory, gate-based verification, role separation, and evidence discipline -- encoded into markdown files that any AI agent can follow.
 
 ## What This Is
@@ -22,13 +24,16 @@ It is not a framework, not a library, not a SaaS product. It is a set of markdow
   AGENTS.md                     Cursor auto-boot entry point (Live State Block + boot sequence)
   .cursor/rules/*.mdc           Cursor rule reinforcement
   .overkill/                    Per-project engine
-    identity/                   BOOTSTRAP.md, SOUL.md, USER.md, TOOLS.md
+    identity/                   BOOTSTRAP.md, SOUL.md, USER.md, TOOLS.md, SESSION-IDENTITY.md (optional)
+    hosts/                      Host playbooks: cursor, antigravity, openclaw
     memory/                     QUICKSTART.md (Tier 1), MEMORY.md (Tier 2), ARCHIVE.md (Tier 3)
     orchestration/              ROLES.md, OPERATOR-DIRECTIVES.md, HANDOFF-TEMPLATE.md
     execution-agent/            Worker agent scope (AGENTS.md, HANDOFF.md, MEMORY.md)
     verification/               PLAN-TEMPLATE.md, GATE-DEFINITIONS.md, EVIDENCE-ROW.md
     prd/                        WORKFLOW.md, project-workflow.md, frontend/backend/database PRDs
-    protocols/                  SESSION-BOOT.md, SCOPE-FREEZE.md, ESCALATION.md
+    protocols/                  SESSION-BOOT.md, SCOPE-FREEZE.md, ESCALATION.md, SDLC-MAP.md (pointer)
+  adapters/                     Cursor / Antigravity / OpenClaw notes
+  scripts/                      overkill-sync.sh, MANAGED-FILES.txt (template → existing repos)
 ```
 
 ## Quick Start
@@ -136,6 +141,11 @@ The agent writes to memory based on events, not arbitrary intervals:
 
 ## Docs
 
+- `CHANGELOG.md` -- version history (matches `VERSION` and `init.sh`)
+- `docs/CURRENT-PLAN.md` -- maintainer anchor for next roadmap iteration
+- `docs/OVERKILL-SDLC-MAP.md` -- pillar rigor, integration checkpoints, GTM placement
+- `docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md` -- sync template into existing projects
+- `docs/CROSS-IDE-ADAPTATION.md` -- Cursor, Antigravity, OpenClaw
 - `docs/PHILOSOPHY.md` -- deep dive into the 14 core principles
 - `docs/ARCHITECTURE.md` -- layer descriptions and diagrams
 - `docs/ADAPTING.md` -- porting to other platforms
