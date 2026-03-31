@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-OVERKILL_VERSION="1.1.0"
+OVERKILL_VERSION="1.2.0"
 GLOBAL_BRAIN="$HOME/.overkill"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
