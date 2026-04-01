@@ -2,6 +2,47 @@
 
 All notable changes to the **OverkillOS** template repository (`overkill-os`) are documented here. Version matches `OVERKILL_VERSION` in `init.sh` and `VERSION`.
 
+## [1.4.0] — 2026-04-01
+
+### Added
+
+- **`.overkill/verification/UI-UX-QA-GATE.md`** strict reusable UI/UX verification gate template:
+  - required read-only QA behavior,
+  - severity-ranked findings with repro/expected/actual/fix direction,
+  - explicit verdict rubric (`PASS`, `PASS_WITH_GAPS`, `FAIL`),
+  - mandatory workflow coverage checklist.
+
+### Changed
+
+- **`.overkill/verification/GATE-DEFINITIONS.md`** now defines required UI/UX gate mapping (`PASS_WITH_GAPS` blocks advancement until remediation or explicit risk acceptance).
+- **`.overkill/verification/PLAN-TEMPLATE.md`** now includes a hardened UI/UX gate definition block for plan authors.
+- **`.overkill/operators/fe/QUICKSTART.md`** now requires running the UI/UX gate and recording evidence.
+- **`docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md`** now includes UI/UX gate verification and references the new gate template.
+- **`scripts/MANAGED-FILES.txt`** now includes verification gate files so they propagate to existing repos via `overkill-sync.sh`.
+- **`README.md`**, **`VERSION`**, and **`init.sh`** aligned to `1.4.0`.
+
+## [1.3.0] — 2026-03-30
+
+### Added
+
+- **`docs/DIAGNOSTIC-PROTOCOL.md`** + **`.overkill/protocols/DIAGNOSTIC-PROTOCOL.md`** pointer for stage-machine diagnostics source of truth.
+- **`scripts/overkill-diagnose.sh`** to report stage, blockers, warnings, recommended department/IDE, and next prompt with persisted logs under `.overkill/logs/`.
+- **`.overkill/operators/{db,be,fe,gtm}/`** scaffolds (`QUICKSTART.md`, `MEMORY.md`, `HANDOFF.md`) for hybrid departmental operator depth.
+
+### Changed
+
+- **`AGENTS.md` Step 0.5** now supports `Department` routing and optional department quickstart load (while preserving execution short-circuit boundaries).
+- **`.overkill/identity/SESSION-IDENTITY.md`** extended from host/role/persona to host/role/persona/department continuity.
+- **`.overkill/prd/WORKFLOW.md`** now explicitly enforces the four-pillar pre-PRD gate:
+  - `Competitor + TargetAudience + Features + TechStack => PRD synthesis allowed`.
+- **`scripts/MANAGED-FILES.txt`** expanded with diagnostic protocol files, operator scaffolds, and CLI diagnostic script.
+- **`docs/OVERKILL-SDLC-MAP.md`** now includes explicit stage-machine mapping and pre-PRD hard gate note.
+
+### Notes
+
+- `AGENTS.md` remains manual-merge for existing repos (not auto-synced) to protect per-repo Live State blocks.
+- Existing repos require `scripts/overkill-sync.sh` + optional `--backup` for propagation.
+
 ## [1.2.0] — 2026-03-30
 
 ### Added

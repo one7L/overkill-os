@@ -1,6 +1,6 @@
 # OverkillOS
 
-**Current template version: 1.2.0** — see `VERSION` and `CHANGELOG.md`.
+**Current template version: 1.4.0** — see `VERSION` and `CHANGELOG.md`.
 
 A Cursor-first operational environment for AI-assisted software development. Two-tier memory, gate-based verification, role separation, and evidence discipline -- encoded into markdown files that any AI agent can follow.
 
@@ -144,6 +144,8 @@ The agent writes to memory based on events, not arbitrary intervals:
 - `CHANGELOG.md` -- version history (matches `VERSION` and `init.sh`)
 - `docs/CURRENT-PLAN.md` -- maintainer anchor for next roadmap iteration
 - `docs/OVERKILL-SDLC-MAP.md` -- pillar rigor, integration checkpoints, GTM placement
+- `docs/DIAGNOSTIC-PROTOCOL.md` -- stage-machine diagnostic spec and output contract
+- `.overkill/verification/UI-UX-QA-GATE.md` -- strict reusable UI/UX verification gate template
 - `docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md` -- sync template into existing projects
 - `docs/CROSS-IDE-ADAPTATION.md` -- Cursor, Antigravity, OpenClaw
 - `docs/PHILOSOPHY.md` -- deep dive into the 14 core principles

@@ -20,6 +20,14 @@
 
 Phases **overlap**; order is **dependency-aware**, not calendar-rigid.
 
+### Stage-machine diagnostic mapping (v1)
+
+`Stage0_Intake -> Stage1_CompetitorResearch -> Stage1_TargetAudience -> Stage1_FeatureArchitecture -> Stage1_TechStack -> Stage2_PRDSynthesis -> Stage3_ContractsAndPrep -> Stage4_BuildAndVerify -> Stage5_ReleaseReadiness -> Stage6_GTMReady`
+
+Pre-PRD hard gate:
+
+`Competitor + TargetAudience + Features + TechStack => PRD synthesis allowed`
+
 ---
 
 ## 2. Pillar rigor matrix (same discipline, different artifacts)

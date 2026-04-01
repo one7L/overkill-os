@@ -42,6 +42,12 @@ _Cross-cutting rules that apply to ALL phases:_
 
 _(Repeat for each gate.)_
 
+### UI/UX Gate -- [Name]
+
+- **When it fires:** after any UI/navigation/workflow change and before phase closeout.
+- **Pass criteria:** UI/UX QA artifact exists and follows `.overkill/verification/UI-UX-QA-GATE.md`; QA verdict is `PASS`; no unaddressed high/medium findings.
+- **What blocks advancement:** missing QA artifact, QA verdict `PASS_WITH_GAPS` without accepted remediation/risk decision, or QA verdict `FAIL`.
+
 ## Files of Record
 
 _Canonical paths where truth lives for this plan._

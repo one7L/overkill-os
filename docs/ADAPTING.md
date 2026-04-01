@@ -100,6 +100,8 @@ When the **template** (`overkill-os`) gains new engine files, use **`docs/OPERAT
 
 **SDLC / multi-pillar alignment:** See **`docs/OVERKILL-SDLC-MAP.md`** (pillars, gates, integration checkpoints, where GTM plugs in). Pointer: `.overkill/protocols/SDLC-MAP.md`.
 
+**Stage diagnostics:** See **`docs/DIAGNOSTIC-PROTOCOL.md`** and `.overkill/protocols/DIAGNOSTIC-PROTOCOL.md` (pointer).
+
 **Roadmap anchor:** **`docs/CURRENT-PLAN.md`** (template maintainer); consumer repos may mirror or fork for local planning.
 
 ## Key Principle

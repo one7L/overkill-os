@@ -1,33 +1,46 @@
 # PRD Pipeline Workflow
 
-This document describes the full research-to-PRD process for OverkillOS projects. It assumes the templates in this directory (`project-workflow.md`, `frontend-prd.md`, `backend-prd.md`, `database-prd.md`) are the standard outputs.
+This workflow defines the strict path from intake to implementation contracts.
 
-## 1. Four-Pillar Intake
+## 1. Four-Pillar Intake (required)
 
-Complete `project-workflow.md` with the four pillars: Tech Stack, Competitors, Features, and Target Audience. This step forces explicit decisions about platform constraints and differentiation before deep research. Treat the intake as the single structured source for "what we think we know" on day one; gaps are expected and drive step 2.
+Complete `project-workflow.md` with:
 
-Do not skip sections. Placeholders should be replaced or explicitly marked as unknown with a follow-up task. The orchestrator should confirm intake completeness before funding a larger research pass.
+1. Competitor research + analysis
+2. Target audience research + analysis
+3. Feature architecture + priorities
+4. Tech stack constraints + decisions
 
-## 2. Research Phase
+Do not skip sections. Unknowns must be explicit with follow-up tasks.
 
-Gather technical documentation, competitive materials, and user evidence (interviews, support logs, surveys) to validate or correct the intake. Prefer primary sources and reproducible notes over opinion. Competitive analysis should map features to the competitor template in the intake so PRDs stay traceable to research.
+## 2. Pre-PRD research validation
 
-Research outputs should be linkable (URLs, file paths, interview IDs). Contradictions with the intake must be resolved in writing before PRD generation, or the intake must be revised with version notes.
+Validate/correct intake using primary evidence (links, docs, interviews, notes). Resolve contradictions in writing.
 
-## 3. PRD Generation
+## 3. PRD synthesis gate
 
-Produce three PRDs from the four pillars and research: **Frontend PRD** (`frontend-prd.md`), **Backend PRD** (`backend-prd.md`), and **Database PRD** (`database-prd.md`). Each PRD should reference stack choices, user-facing scope, and data needs from the intake without inventing silent requirements.
+PRD generation is allowed only when all four pre-PRD pillars have evidence:
 
-Cross-PRD consistency matters: routes and API contracts, auth flows, and schema boundaries should align. One owner (or orchestrator review) should run a consistency pass before review.
+`Competitor + TargetAudience + Features + TechStack => PRD synthesis allowed`
 
-## 4. Review and Approval
+Generate:
 
-The orchestrator reviews the three PRDs for feasibility, risk, and fit to scope. Agents or contributors refine sections based on feedback; changes should be summarized so approval is auditable. Approval means the PRDs are the implementation contract until formally amended.
+- `frontend-prd.md`
+- `backend-prd.md`
+- `database-prd.md`
 
-Unresolved disagreements escalate per `protocols/ESCALATION.md` rather than shipping ambiguous PRDs.
+Optional when phase is active:
 
-## 5. Implementation Tracking
+- `gtm-prd.md`
 
-During build-out, mark completed items and track progress against the PRDs (checkboxes, linked issues, or a single tracking doc). When implementation diverges from a PRD, either update the PRD with rationale or treat the change as scope that requires orchestrator approval.
+## 4. Review and approval
 
-Closing epics or phases without mapping to PRD acceptance criteria breaks traceability; avoid it.
+Orchestrator reviews feasibility, risk, and cross-PRD consistency. Unresolved disputes escalate via `protocols/ESCALATION.md`.
+
+## 5. Implementation tracking
+
+Track progress against PRD acceptance criteria. Divergence requires explicit rationale or scope approval.
+
+## 6. Diagnostic integration
+
+`scripts/overkill-diagnose.sh` should reflect this workflow stage-by-stage and report current stage, blockers, and next operator/IDE recommendation.

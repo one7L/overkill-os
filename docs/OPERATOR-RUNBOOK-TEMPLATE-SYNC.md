@@ -57,6 +57,25 @@ OpenClaw/VPS and headless agents read **`~/.overkill/hosts/<host>.md`** without 
 
 ---
 
+## 4.5 Canonical ownership and promotion flow
+
+Use this sequence to avoid drift across local brain, template, downstream repos, and mirrors.
+
+1. **Local brain first (`~/.overkill/`)**
+   - Update source-of-truth docs and guardrails here first.
+   - Validate wording/protocols before propagation.
+2. **Back-propagate to canonical template (`overkill-os`)**
+   - Port accepted changes into template-managed files.
+   - Update release metadata (`VERSION`, `init.sh`, `README.md`, `CHANGELOG.md`) if cutting a template increment.
+3. **Propagate to downstream repos**
+   - Run `scripts/overkill-sync.sh --dry-run` then `--backup` from template.
+   - Keep `AGENTS.md` manual merge policy.
+4. **Push remotes only after approval**
+   - Push template repo first, then downstream repos, then optional backup mirrors.
+   - Include evidence artifact paths in push/PR notes.
+
+---
+
 ## 5. Verify with a new chat (smoke test)
 
 For **each** updated repo, open a **new** agent chat and confirm:
@@ -66,6 +85,7 @@ For **each** updated repo, open a **new** agent chat and confirm:
 | Operator boot | Step 0 global QUICKSTART + Step 2 project reads; optional Step 0.5 if `SESSION-IDENTITY.md` exists |
 | No drift | Live State Block aligns with `.overkill/memory/QUICKSTART.md` where applicable |
 | Execution agent | In an execution-only chat: reads **only** `.overkill/execution-agent/*` + `HANDOFF.md` + code per handoff — not canonical `.overkill/memory/MEMORY.md` |
+| UI/UX gate | Run the strict UI/UX verification gate from `.overkill/verification/UI-UX-QA-GATE.md`; record verdict + evidence path before completion claim |
 
 ---
 
@@ -82,4 +102,5 @@ For **each** updated repo, open a **new** agent chat and confirm:
 
 - [CROSS-IDE-ADAPTATION.md](CROSS-IDE-ADAPTATION.md) — Cursor, Antigravity, OpenClaw entry points
 - [README.md](README.md) — docs folder index
+- `.overkill/verification/UI-UX-QA-GATE.md` — strict reusable browser QA gate template and verdict rubric
 - `.overkill/identity/SESSION-IDENTITY.md` — host / role / persona defaults

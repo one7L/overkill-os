@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-OVERKILL_VERSION="1.2.0"
+OVERKILL_VERSION="1.4.0"
 GLOBAL_BRAIN="$HOME/.overkill"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+APPEND_BEGIN="<!-- BEGIN:overkillos-boot-block -->"
+APPEND_END="<!-- END:overkillos-boot-block -->"
 
 print_header() {
   echo ""
@@ -19,6 +21,82 @@ print_step() {
 print_error() {
   echo "ERROR: $1" >&2
   exit 1
+}
+
+upsert_control_plane_repo() {
+  local control_plane_root="$HOME/github/overkillOS-app"
+  local control_plane_config="$control_plane_root/config/repos.json"
+  local control_plane_backup="$control_plane_root/config/repos.json.bak"
+  local upsert_status="skipped"
+
+  if [[ "$TARGET" == "$control_plane_root" ]]; then
+    echo "  UI registry update: skipped (target is overkillOS-app)"
+    return 0
+  fi
+
+  if [[ ! -d "$control_plane_root" ]]; then
+    echo "  UI registry update: skipped (overkillOS-app not found at $control_plane_root)"
+    return 0
+  fi
+
+  if [[ ! -f "$control_plane_config" ]]; then
+    echo "  UI registry update: skipped (missing $control_plane_config)"
+    return 0
+  fi
+
+  cp "$control_plane_config" "$control_plane_backup"
+
+  if upsert_status="$(TARGET_PROJECT_PATH="$TARGET" TARGET_PROJECT_NAME="$PROJECT_NAME" CONTROL_PLANE_CONFIG="$control_plane_config" node <<'EOF'
+const fs = require("node:fs");
+const path = require("node:path");
+
+const configPath = process.env.CONTROL_PLANE_CONFIG;
+const projectPath = path.resolve(process.env.TARGET_PROJECT_PATH || "");
+const projectName = String(process.env.TARGET_PROJECT_NAME || "project").trim();
+
+const toId = (value) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+const fallbackId = toId(projectName) || "project";
+const fallbackLabel = projectName;
+
+const raw = fs.readFileSync(configPath, "utf8");
+const parsed = JSON.parse(raw);
+const repos = Array.isArray(parsed.repos) ? parsed.repos : [];
+
+const exists = repos.some((repo) => path.resolve(String(repo.root || "")) === projectPath);
+if (exists) {
+  process.stdout.write("exists");
+  process.exit(0);
+}
+
+const existingIds = new Set(repos.map((repo) => String(repo.id || "").trim()).filter(Boolean));
+let nextId = fallbackId;
+let suffix = 1;
+while (existingIds.has(nextId)) {
+  suffix += 1;
+  nextId = `${fallbackId}-${suffix}`;
+}
+
+repos.push({
+  id: nextId,
+  label: fallbackLabel,
+  root: projectPath,
+});
+
+parsed.repos = repos;
+fs.writeFileSync(configPath, `${JSON.stringify(parsed, null, 2)}\n`, "utf8");
+process.stdout.write("added");
+EOF
+  )"; then
+    echo "  UI registry update: $upsert_status"
+  else
+    cp "$control_plane_backup" "$control_plane_config"
+    echo "  UI registry update: skipped (failed to parse/update config/repos.json)"
+  fi
 }
 
 usage() {
@@ -106,12 +184,24 @@ print_step ".overkill/" "created"
 if [[ -f "$TARGET/AGENTS.md" ]]; then
   echo ""
   echo "  WARNING: AGENTS.md already exists in $TARGET."
-  echo "  Appending OverkillOS boot block to the end."
-  echo "" >> "$TARGET/AGENTS.md"
-  echo "---" >> "$TARGET/AGENTS.md"
-  echo "" >> "$TARGET/AGENTS.md"
-  cat "$SCRIPT_DIR/AGENTS.md" >> "$TARGET/AGENTS.md"
-  print_step "AGENTS.md" "appended"
+  if grep -q "$APPEND_BEGIN" "$TARGET/AGENTS.md"; then
+    echo "  Existing OverkillOS boot block marker found. Skipping append."
+    print_step "AGENTS.md" "unchanged"
+  else
+    echo "  Appending OverkillOS boot block to the end."
+    {
+      echo ""
+      echo "$APPEND_BEGIN"
+      echo ""
+      echo "---"
+      echo ""
+      cat "$SCRIPT_DIR/AGENTS.md"
+      echo ""
+      echo "$APPEND_END"
+      echo ""
+    } >> "$TARGET/AGENTS.md"
+    print_step "AGENTS.md" "appended"
+  fi
 else
   cp "$SCRIPT_DIR/AGENTS.md" "$TARGET/AGENTS.md"
   print_step "AGENTS.md" "created"
@@ -138,6 +228,7 @@ fi
 mkdir -p "$GLOBAL_BRAIN/projects/$PROJECT_NAME"
 
 print_step "Registered in ~/.overkill/projects/registry.md" "$PROJECT_NAME"
+upsert_control_plane_repo
 
 # ── Summary ─────────────────────────────────────────────────────────
 

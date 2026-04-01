@@ -120,6 +120,10 @@ Host playbooks (`cursor`, `antigravity`, `openclaw`). Sync from template `global
 
 `scripts/overkill-sync.sh` and `scripts/MANAGED-FILES.txt` update **managed** paths only; do not add canonical memory files to the manifest unless intentional. Optional: `<project>/.overkill/.sync-ignore`.
 
+### Diagnostic logs
+
+`scripts/overkill-diagnose.sh` writes reports to `.overkill/logs/diagnostics/` and appends to `.overkill/logs/DIAGNOSTICS.md`. Keep logs as project evidence artifacts; do not treat them as canonical architecture decisions unless promoted into MEMORY/ARCHIVE.
+
 ## Drift Detection (at session start)
 
 Before responding to the first message:

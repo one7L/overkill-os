@@ -33,3 +33,14 @@ Regression on a previously passing gate is treated as a **new failure** at the g
 ## Evidence
 
 Gate results are recorded as evidence rows (see `EVIDENCE-ROW.md`). A gate without a recorded outcome for a given run is not closed.
+
+## UI/UX verification gate
+
+For UI/navigation/workflow changes, use `.overkill/verification/UI-UX-QA-GATE.md`.
+
+- Required artifact: severity-ranked findings with reproduction/expected/actual/fix direction.
+- Required QA verdict from run: `PASS`, `PASS_WITH_GAPS`, or `FAIL`.
+- Required gate mapping:
+  - `PASS` -> gate may close PASS.
+  - `PASS_WITH_GAPS` -> gate remains FAIL until remediation closes gaps or orchestrator explicitly accepts risk.
+  - `FAIL` -> gate remains FAIL.

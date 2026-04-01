@@ -22,6 +22,7 @@
 
 ## Key References
 - MEMORY.md — multi-surface identity, architecture, PRD status
+- `docs/DIAGNOSTIC-PROTOCOL.md` — stage-machine checks and output contract
 - `docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md` — template → existing repos sync
 - `docs/CROSS-IDE-ADAPTATION.md` — Cursor, Antigravity, OpenClaw
 - MEMORY.md #[section] for [topic]

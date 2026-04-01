@@ -8,6 +8,10 @@
 
 Optional Step 0.5 in `AGENTS.md`: [SESSION-IDENTITY.md](../identity/SESSION-IDENTITY.md), `.overkill/hosts/*.md`, execution boundaries in [execution-agent/AGENTS.md](../execution-agent/AGENTS.md). Template sync: `scripts/overkill-sync.sh` + `scripts/MANAGED-FILES.txt`. Operator runbook: [docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md](../../docs/OPERATOR-RUNBOOK-TEMPLATE-SYNC.md). Anchor: [ARCHIVE.md](ARCHIVE.md#multi-surface-identity-2026-03-30).
 
+## Stage-machine diagnostics (1.3)
+
+Diagnostic source of truth is `docs/DIAGNOSTIC-PROTOCOL.md` (pointer: `.overkill/protocols/DIAGNOSTIC-PROTOCOL.md`). The CLI `scripts/overkill-diagnose.sh` must report stage position, blockers, warnings, and next operator/IDE prompt using deterministic artifact checks.
+
 ## Architecture Decisions
 [Decisions with rationale. Format: "Decision: X. Rationale: Y. Date: Z. See ARCHIVE.md #anchor for full log."]
 
